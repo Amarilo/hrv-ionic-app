@@ -1,0 +1,77 @@
+<!--
+  Generated template for the ChartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons end>
+        <button ion-button (click)="onGoToSettings()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>chart-page</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-slides style="height:400px">
+    <ion-slide>
+      <canvas id="hrCanvas" width="400" height="400"></canvas>
+    </ion-slide>
+    <ion-slide>
+      <ion-img width="287" height="311" src="assets/imgs/giphy.gif"></ion-img>
+    </ion-slide>
+    <ion-slide>
+      <canvas id="donutCanvas" width="400" height="400"></canvas>
+    </ion-slide>
+    <ion-slide>
+      <canvas id="coherenceCanvas" width="400" height="400"></canvas>
+    </ion-slide>
+  </ion-slides>
+  <p><b>HR Coherence {{coherence.coherence}} %</b> {{coherence.hits}} of {{coherence.total}}</p>
+
+  <ion-grid>
+    <ion-row *ngIf="debugMode">
+      <ion-col ion-col-12 text-center>
+        <b>Mock HR data</b>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="debugMode">
+      <ion-col col-4>
+        <button ion-button (click)="onStartChart()" >Start Chart</button>
+      </ion-col>
+      <ion-col col-4>
+        <!-- <button ion-button (click)="newDataPoint()" >New Data point</button> -->
+        <ion-item>
+            <!-- <ion-label>Random</ion-label> -->
+            <ion-toggle [(ngModel)]="isRandom"></ion-toggle>
+        </ion-item>
+      </ion-col>
+      <ion-col col-4>
+        <button ion-button (click)="onStopChart()" >Stop Chart</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!debugMode">
+      <ion-col col-6>
+        <button ion-button (click)="onStartHR_Reading()" color="secondary">Start HR Reading</button>
+      </ion-col>
+      <!-- <ion-col>
+        <button ion-button (click)="goToNextSlide()" color="primary">Switch Chart</button>
+      </ion-col> -->
+      <ion-col col-6>
+        <button ion-button (click)="onStopHR_Reading()" color="danger">Stop HR Reading</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  
+  
+  
+  
+</ion-content>
